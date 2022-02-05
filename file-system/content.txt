@@ -1,2 +1,2 @@
 Mixins as class decorators in typescript/angular2
-Mixin pattern also known as functional inheritance is meant to solve the problems caused by classical inheritance approach. This pattern is used to achieve multiple inheritance (we are assuming Angular2 components as a context).
+Mixin pattern also known as functional inheritance is meant to solve the problems caused by classical inheritance approach. This pattern is used to achieve multiple inheritance (we are assuming Angular2 components as a context).{"name":"Please enter your name","age":"Please enter your age"}
