@@ -24,7 +24,7 @@ exports.update = (model, cb) =>{
     const filter = {_id: ObjectId(model._id)};
 
     //Define what to update and then set operator
-    const update = {$set: {name: model.name, password: model.password, gender: model.gender}};
+    const update = {$set: {name: model.name, email:model.email, password: model.password, gender: model.gender}};
 
     collection.findOneAndUpdate(filter, update)
     .then(()=>{
@@ -41,4 +41,12 @@ exports.getByID = (id, cb)=>{
     collection.findOne({_id: ObjectId(id)})
         .then((user)=>cb(user),
             err=>{console.log(err)})
+}
+
+exports.deleteByID = (id, cb) =>{
+    const collection = db.getCollection("user");
+
+    collection.deleteOne({_id: ObjectId(id)})
+        .then((user)=>cb(user),
+        (err)=>{console.log(err)});
 }
