@@ -8,3 +8,10 @@ exports.update = (req, res) => {
         res.send("Data is updated");
     })
 }
+
+exports.getByID = (req, res)=>{
+    const id = req.params.id;
+    repo.getByID(id, (user)=>{
+        res.status(200).send(user);
+    });
+}

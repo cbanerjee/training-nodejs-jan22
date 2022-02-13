@@ -1,6 +1,11 @@
 const db = require("../../config/mongodb");
 const {ObjectId} = require("mongodb");
 
+// This is an optional function to help replacing all the user method fetchers used in this code
+// const getUserCollection = () =>{
+//     return db.getCollection("user");
+// }
+
 exports.add = (model, cb) =>{
     const collection = db.getCollection("user");
 
@@ -26,4 +31,14 @@ exports.update = (model, cb) =>{
         cb()
     },
     err=> {console.log(err)})
+}
+
+exports.getByID = (id, cb)=>{
+    //get Collection
+    const collection = db.getCollection("user");
+
+    //Find data
+    collection.findOne({_id: ObjectId(id)})
+        .then((user)=>cb(user),
+            err=>{console.log(err)})
 }
