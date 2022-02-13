@@ -1,5 +1,8 @@
 const express = require ("express");
+
 const userAuthRoutes = require("./user/routes/user-auth-routes");
+const userRoutes = require("./user/routes/user-routes");
+
 const bodyParser = require("body-parser");
 const mongodb = require("./config/mongodb");
 
@@ -14,6 +17,7 @@ server.listen (3200, ()=>{
 server.use(bodyParser.json());
 
 server.use("/api/user/auth", userAuthRoutes);
+server.use("api/user/", userRoutes);
 
 server.get("/", (req, res) =>{
     res.end("Hello from Express. You are now connected");

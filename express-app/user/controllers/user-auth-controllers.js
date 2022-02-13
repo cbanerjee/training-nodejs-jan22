@@ -3,7 +3,7 @@ const repo = require("../repositories/user")
 
 exports.register = (req, res)=>{
     
-    const newUser = new userModel (req.body.name, req.body.email, req.body,password, req.body.gender);
+    const newUser = new userModel (req.body.name, req.body.email, req.body.password, req.body.gender);
     
     //res.send("This is register");
     repo.add(newUser, ()=>{
