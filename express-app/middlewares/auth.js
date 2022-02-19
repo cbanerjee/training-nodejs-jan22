@@ -5,16 +5,14 @@ const verify = (req,res, next) =>{
 
     if(!token) {
         res.status(401).send("Unauthorized");
-    } else {
-        try
-        {
-        const payload = jwt.verify(token, "This is my secret key");
-        req.user = payload;
-        }
-        catch (err) {
-            res.status(401).send("Invalid Token");
-            console.log(err);
-        }
+    }
+
+    try
+    {
+    const payload = jwt.verify(token, "This is my secret key");
+    req.user = payload;
+    }catch (err){
+        return res.status(401).send("Invalid Token");
     }
     next();
 }

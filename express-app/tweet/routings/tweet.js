@@ -4,6 +4,6 @@ const isAuthorized = require("../../middlewares/auth");
 
 const router = express.Router();
 
-router.post("/", isAuthorized,controller.postTweet);
+router.post("/", isAuthorized, controller.postTweet);
 
 module.exports = router;
