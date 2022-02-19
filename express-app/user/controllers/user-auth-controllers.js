@@ -1,5 +1,6 @@
 const userModel = require ("../models/user");
-const repo = require("../repositories/user")
+const repo = require("../repositories/user");
+const jwt = require("jsonwebtoken");
 
 exports.register = (req, res)=>{
     
@@ -12,6 +13,36 @@ exports.register = (req, res)=>{
 }
 
 exports.login = (req,res)=>{
-    console.log("This is a login req")
-    res.end ("This is login");
+    // console.log("This is a login req")
+    // res.end ("This is login");
+    const email = req.body.email;
+    const password = req.body.password;
+
+    repo.getByEmail(email, (record)=>{
+        if(!record) {
+            res.status(400).send("Invalid Email");
+        }
+        if(record.password==password){
+            //Create token using jsonwebtoken
+            const token = jwt.sign({
+                _id: record._id,
+                email: record.email
+            },
+            "This is my secret key",
+            {
+                expiresIn: '2h'
+            }
+            );
+
+            const response ={
+                email: record.email,
+                id:record._id,
+                token: token
+            }
+
+            res.status(200).send(response);//send("Login done");
+        } else {
+            res.status(400).send("Wrong password");
+        }
+    })
 }
