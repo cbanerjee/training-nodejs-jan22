@@ -14,6 +14,8 @@ exports.register = (req, res)=>{
 
 exports.login = (req,res)=>{
     // console.log("This is a login req")
+
+    // throw new Error("Uncaught exception");
     // res.end ("This is login");
     const email = req.body.email;
     const password = req.body.password;
