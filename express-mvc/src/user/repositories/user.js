@@ -1,4 +1,4 @@
-const db = require("../../config/mongodb");
+const db = require("../../../config/mongodb");
 const {ObjectId} = require("mongodb");
 
 // This is an optional function to help replacing all the user method fetchers used in this code
