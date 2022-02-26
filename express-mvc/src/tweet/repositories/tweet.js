@@ -18,6 +18,8 @@ exports.add = (model, cb)=>{
         },
         err=>{throw new Error(err);})
 }
+
+
 exports.getByEmail = (email, cb)=>{
     getUserCollection().findOne({email})
         .then(
@@ -37,4 +39,15 @@ exports.getByEmail = (email, cb)=>{
             }
         })        
     }
+}
+
+
+exports.getByUserID = (id, cb)=>{
+    // Step 1: Access collection.
+    console.log(id);
+    getTweetCollection().find({userID: ObjectId(id)}).toArray()
+        .then((tweets)=>{
+            cb(tweets);
+        },
+        err=>{throw new Error(err);})
 }
