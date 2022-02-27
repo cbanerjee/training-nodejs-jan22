@@ -38,3 +38,10 @@ exports.login = (req, res)=>{
         }
     })
  }
+
+ exports.logout = (req, res) =>{
+     req.session.authenticated = false;
+     req.session.destroy();
+
+     res.sendFile(path.join(__dirname,"../views/login.html"));
+ }

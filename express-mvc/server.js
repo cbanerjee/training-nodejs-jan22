@@ -17,7 +17,8 @@ server.use(session({
 server.set("view engine", "ejs");
 server.set("views",
 [path.join(__dirname, "./src/tweet/views"), 
- path.join(__dirname, "./src/user/views")])
+ path.join(__dirname, "./src/user/views"),
+ path.join(__dirname, "./src/shared/views")])
 
 
 mongodb.connect();
